@@ -75,9 +75,15 @@ function resetVGS(flag){
 		document.querySelector("main").innerHTML += DOMBLOCKS.output_toast(current_cmd.join(""));
 		let elem = document.querySelector(".output_toast");
 		elem.addEventListener("animationend", () => {elem.remove()});
+		document.querySelector(".loading").style.opacity = 1;
 		audio.pause();
 		audio = new Audio("voicepacks/" + current_voicepack + "/" + file_name_map[current_cmd.join("")] + ".ogg");
-		audio.play();
+		audio.addEventListener('loadeddata', () => {
+			if(audio.readyState >= 2) {
+				audio.play();
+				document.querySelector(".loading").style.opacity = 0;
+			}
+		});
 	}
 	current_cmd = [];
 	available_combos = vgs_cmd_list;
