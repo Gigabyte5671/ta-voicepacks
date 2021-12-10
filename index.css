@@ -18,7 +18,7 @@ body{
 }
 main{
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
@@ -155,4 +155,9 @@ main{
 		  transform: translateY(0px);}
 	100% {opacity: 0;
 		  transform: translateY(-8px);}
+}
+
+select{
+	margin: 20px;
+	font-size: 18px;
 }

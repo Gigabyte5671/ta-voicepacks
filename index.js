@@ -1,11 +1,14 @@
 var audio = new Audio(),
-	current_voicepack = "TotalBiscuit",
+	current_voicepack = "ExcitedGuy",
 	vgs_cmd_list = Object.keys(voicepacks.all),
 	available_combos = vgs_cmd_list,
 	current_cmd = [],
 	available_next = ["V"];
 
 const DOMBLOCKS = {
+	dropdown_option: function(text){
+		return '<option value="' + text + '">' + text + '</option>';
+	},
 	output_toast: function(cmd){
 		return '<div class="output_toast">[' + cmd + '] ' + voicepacks.all[cmd].split("%").join("") + '</div>';
 	},
@@ -20,7 +23,9 @@ const DOMBLOCKS = {
 	}
 }
 
+Object.keys(voicepacks.packs).forEach((k) => {document.getElementById("voicepacks_dropdown").innerHTML += DOMBLOCKS.dropdown_option(k.toString())});
 updateMenu();
+document.getElementById("voicepacks_dropdown").value = current_voicepack;
 document.addEventListener("keydown", parseKey);
 
 
@@ -35,6 +40,7 @@ function parseKey(k){
 		}
 		available_next.length == 0 ? playVGS(0) : false;
 		updateMenu();
+		document.getElementById("voicepacks_dropdown").value = current_voicepack;
 	}else{
 		playVGS(1);
 	}
@@ -77,9 +83,9 @@ function playVGS(flag){
 		elem.addEventListener("animationend", () => {elem.remove()});
 		document.querySelector(".loading").style.opacity = 1;
 		audio.pause();
-		audio = new Audio("voicepacks/" + current_voicepack + "/" + file_name_map[current_cmd.join("")] + ".ogg");
+		audio = new Audio("voicepacks/" + current_voicepack.split("_").join(" ") + "/" + file_name_map[current_cmd.join("")] + ".ogg");
 		audio.addEventListener('loadeddata', () => {
-			if(audio.readyState >= 2) {
+			if(audio.readyState >= 2){
 				audio.play();
 				document.querySelector(".loading").style.opacity = 0;
 
@@ -87,6 +93,7 @@ function playVGS(flag){
 				available_combos = vgs_cmd_list;
 				available_next = ["V"];
 				updateMenu();
+				document.getElementById("voicepacks_dropdown").value = current_voicepack;
 			}
 		});
 	}else{
@@ -94,5 +101,6 @@ function playVGS(flag){
 		available_combos = vgs_cmd_list;
 		available_next = ["V"];
 		updateMenu();
+		document.getElementById("voicepacks_dropdown").value = current_voicepack;
 	}
 }
