@@ -33,10 +33,10 @@ function parseKey(k){
 			let char = available_combos[i].substr(current_cmd.length, 1);
 			char == "" ? false : available_next.includes(char) ? false : available_next.push(char);
 		}
-		available_next.length == 0 ? resetVGS(0) : false;
+		available_next.length == 0 ? playVGS(0) : false;
 		updateMenu();
 	}else{
-		resetVGS(1);
+		playVGS(1);
 	}
 }
 
@@ -69,7 +69,7 @@ function updateMenu(){
 }
 
 
-function resetVGS(flag){
+function playVGS(flag){
 	if(flag === 0){
 		document.querySelectorAll(".output_toast").forEach((e) => {e.remove()});
 		document.querySelector("main").innerHTML += DOMBLOCKS.output_toast(current_cmd.join(""));
@@ -82,11 +82,17 @@ function resetVGS(flag){
 			if(audio.readyState >= 2) {
 				audio.play();
 				document.querySelector(".loading").style.opacity = 0;
+
+				current_cmd = [];
+				available_combos = vgs_cmd_list;
+				available_next = ["V"];
+				updateMenu();
 			}
 		});
+	}else{
+		current_cmd = [];
+		available_combos = vgs_cmd_list;
+		available_next = ["V"];
+		updateMenu();
 	}
-	current_cmd = [];
-	available_combos = vgs_cmd_list;
-	available_next = ["V"];
-	updateMenu();
 }
