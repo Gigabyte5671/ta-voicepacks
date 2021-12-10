@@ -1,13 +1,13 @@
 var audio = new Audio(),
-	current_voicepack = "ExcitedGuy",
+	current_voicepack = "",
 	vgs_cmd_list = Object.keys(voicepacks.all),
 	available_combos = vgs_cmd_list,
 	current_cmd = [],
 	available_next = ["V"];
 
 const DOMBLOCKS = {
-	dropdown_option: function(text){
-		return '<option value="' + text + '">' + text + '</option>';
+	dropdown_option: function(value, text){
+		return '<option value="' + value + '">' + text + '</option>';
 	},
 	output_toast: function(cmd){
 		return '<div class="output_toast">[' + cmd + '] ' + voicepacks.all[cmd].split("%").join("") + '</div>';
@@ -23,7 +23,12 @@ const DOMBLOCKS = {
 	}
 }
 
-Object.keys(voicepacks.packs).forEach((k) => {document.getElementById("voicepacks_dropdown").innerHTML += DOMBLOCKS.dropdown_option(k.toString())});
+Object.keys(voicepacks.packs).forEach((k) => {
+	document.getElementById("voicepacks_dropdown").innerHTML += DOMBLOCKS.dropdown_option(k.toString(), voicepacks.packs[k].name);
+	if(voicepacks.packs[k].default){
+		current_voicepack = voicepacks.packs[k].name;
+	}
+});
 updateMenu();
 document.getElementById("voicepacks_dropdown").value = current_voicepack;
 document.addEventListener("keydown", parseKey);
