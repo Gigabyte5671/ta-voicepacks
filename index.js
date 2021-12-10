@@ -31,7 +31,6 @@ function parseKey(k){
 		available_combos = available_combos.filter((v) => {return v.substr(0, current_cmd.join("").length) == current_cmd.join("")});
 		for(let i = 0; i < available_combos.length; i++){
 			let char = available_combos[i].substr(current_cmd.length, 1);
-			console.log(char);
 			char == "" ? false : available_next.includes(char) ? false : available_next.push(char);
 		}
 		available_next.length == 0 ? resetVGS(0) : false;
