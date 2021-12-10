@@ -26,7 +26,7 @@ const DOMBLOCKS = {
 Object.keys(voicepacks.packs).forEach((k) => {
 	document.getElementById("voicepacks_dropdown").innerHTML += DOMBLOCKS.dropdown_option(k.toString(), voicepacks.packs[k].name);
 	if(voicepacks.packs[k].default){
-		current_voicepack = voicepacks.packs[k].name;
+		current_voicepack = k.toString();
 	}
 });
 updateMenu();
