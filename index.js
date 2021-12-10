@@ -25,18 +25,19 @@ document.addEventListener("keydown", parseKey);
 
 
 function parseKey(k){
-	current_cmd.push(k.key.toString().toUpperCase());
-	if(k.key.toString().toUpperCase() == "ESCAPE"){
-		resetVGS(1);
-	}else{
+	if(k.key.toString().toUpperCase() != "ESCAPE" && available_next.includes(k.key.toString().toUpperCase())){
+		current_cmd.push(k.key.toString().toUpperCase());
 		available_next = [];
-		available_combos = available_combos.filter((v) => {return v.includes(current_cmd.join(""), 0)});
+		available_combos = available_combos.filter((v) => {return v.substr(0, current_cmd.join("").length) == current_cmd.join("")});
 		for(let i = 0; i < available_combos.length; i++){
 			let char = available_combos[i].substr(current_cmd.length, 1);
+			console.log(char);
 			char == "" ? false : available_next.includes(char) ? false : available_next.push(char);
 		}
 		available_next.length == 0 ? resetVGS(0) : false;
 		updateMenu();
+	}else{
+		resetVGS(1);
 	}
 }
 
