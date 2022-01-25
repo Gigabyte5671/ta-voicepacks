@@ -42,7 +42,7 @@ Object.keys(voicepacks.packs).forEach((pack_key) => {
 	ELEM_voicepacks_dropdown.innerHTML += DOMBLOCKS.dropdown_optgroup(pack_key.toString(), voicepacks.packs[pack_key].name, voice_pack_options);
 });
 updateMenu();
-ELEM_voicepacks_dropdown.value = current_voicepack.voice;
+document.getElementById("voicepacks_dropdown").value = current_voicepack.voice; //For some reason the element must be retrieved every time value needs to be updated.
 document.addEventListener("keydown", parseKey);
 
 
@@ -57,7 +57,7 @@ function parseKey(k){
 		}
 		available_next.length == 0 ? playVGS(0) : false;
 		updateMenu();
-		ELEM_voicepacks_dropdown.value = current_voicepack.voice;
+		document.getElementById("voicepacks_dropdown").value = current_voicepack.voice;
 	}else{
 		playVGS(1);
 	}
@@ -123,7 +123,7 @@ function playVGS(flag){
 				available_combos = vgs_cmd_list;
 				available_next = ["V"];
 				updateMenu();
-				ELEM_voicepacks_dropdown.value = current_voicepack.voice;
+				document.getElementById("voicepacks_dropdown").value = current_voicepack.voice;
 			}
 		});
 	}else{
@@ -131,6 +131,6 @@ function playVGS(flag){
 		available_combos = vgs_cmd_list;
 		available_next = ["V"];
 		updateMenu();
-		ELEM_voicepacks_dropdown.value = current_voicepack.voice;
+		document.getElementById("voicepacks_dropdown").value = current_voicepack.voice;
 	}
 }
