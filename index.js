@@ -1,13 +1,18 @@
-var audio = new Audio(),
-	current_voicepack = "",
+let audio = new Audio(),
+	current_voicepack = {pack: "", voice: ""},
 	vgs_cmd_list = Object.keys(voicepacks.all),
 	available_combos = vgs_cmd_list,
 	current_cmd = [],
-	available_next = ["V"];
+	available_next = ["V"],
+	ELEM_voicepacks_dropdown = document.getElementById("voicepacks_dropdown"),
+	ELEM_pack_indicator = document.getElementById("current_pack_indicator");
 
 const DOMBLOCKS = {
 	dropdown_option: function(value, text){
 		return '<option value="' + value + '">' + text + '</option>';
+	},
+	dropdown_optgroup: function(value, text, content){
+		return '<optgroup value="' + value + '" label="' + text + '">' + content + '</optgroup>';
 	},
 	output_toast: function(cmd){
 		return '<div class="output_toast">[' + cmd + '] ' + voicepacks.all[cmd].split("%").join("") + '</div>';
@@ -23,14 +28,21 @@ const DOMBLOCKS = {
 	}
 }
 
-Object.keys(voicepacks.packs).forEach((k) => {
-	document.getElementById("voicepacks_dropdown").innerHTML += DOMBLOCKS.dropdown_option(k.toString(), voicepacks.packs[k].name);
-	if(voicepacks.packs[k].default){
-		current_voicepack = k.toString();
-	}
+//Populate the dropdown menu
+Object.keys(voicepacks.packs).forEach((pack_key) => {
+	let voice_pack_options = '';
+	Object.keys(voicepacks.packs[pack_key].voices).forEach((voice_key) => {
+		voice_pack_options += DOMBLOCKS.dropdown_option(voice_key.toString(), voicepacks.packs[pack_key].voices[voice_key].name);
+		if(voicepacks.packs[pack_key].voices[voice_key].default){
+			current_voicepack.pack = voicepacks.packs[pack_key].name.toString();
+			ELEM_pack_indicator.innerHTML = current_voicepack.pack + ":";
+			current_voicepack.voice = voice_key.toString();
+		}
+	});
+	ELEM_voicepacks_dropdown.innerHTML += DOMBLOCKS.dropdown_optgroup(pack_key.toString(), voicepacks.packs[pack_key].name, voice_pack_options);
 });
 updateMenu();
-document.getElementById("voicepacks_dropdown").value = current_voicepack;
+ELEM_voicepacks_dropdown.value = current_voicepack.voice;
 document.addEventListener("keydown", parseKey);
 
 
@@ -45,7 +57,7 @@ function parseKey(k){
 		}
 		available_next.length == 0 ? playVGS(0) : false;
 		updateMenu();
-		document.getElementById("voicepacks_dropdown").value = current_voicepack;
+		ELEM_voicepacks_dropdown.value = current_voicepack.voice;
 	}else{
 		playVGS(1);
 	}
@@ -80,6 +92,19 @@ function updateMenu(){
 }
 
 
+function packSelectionChanged(e){
+	Object.keys(voicepacks.packs).forEach((pack_key) => {
+		Object.keys(voicepacks.packs[pack_key].voices).forEach((voice_key) => {
+			if(voice_key === e.target.value){
+				current_voicepack.pack = voicepacks.packs[pack_key].name.toString();
+			}
+		});
+	});
+	current_voicepack.voice = e.target.value;
+	ELEM_pack_indicator.innerHTML = current_voicepack.pack + ":";
+}
+
+
 function playVGS(flag){
 	if(flag === 0){
 		document.querySelectorAll(".output_toast").forEach((e) => {e.remove()});
@@ -88,7 +113,7 @@ function playVGS(flag){
 		elem.addEventListener("animationend", () => {elem.remove()});
 		document.querySelector(".loading").style.opacity = 1;
 		audio.pause();
-		audio = new Audio( (current_voicepack.includes("$") ? "community_packs/" + current_voicepack.split("$")[1].split("_").join(" ") : "voicepacks/" + current_voicepack.split("_").join(" ")) + "/" + file_name_map[current_cmd.join("")] + ".ogg");
+		audio = new Audio( (current_voicepack.voice.includes("$") ? "community_packs/" + current_voicepack.voice.split("$")[1].split("_").join(" ") : "voicepacks/" + current_voicepack.voice.split("_").join(" ")) + "/" + file_name_map[current_cmd.join("")] + ".ogg");
 		audio.addEventListener('loadeddata', () => {
 			if(audio.readyState >= 2){
 				audio.play();
@@ -98,7 +123,7 @@ function playVGS(flag){
 				available_combos = vgs_cmd_list;
 				available_next = ["V"];
 				updateMenu();
-				document.getElementById("voicepacks_dropdown").value = current_voicepack;
+				ELEM_voicepacks_dropdown.value = current_voicepack.voice;
 			}
 		});
 	}else{
@@ -106,6 +131,6 @@ function playVGS(flag){
 		available_combos = vgs_cmd_list;
 		available_next = ["V"];
 		updateMenu();
-		document.getElementById("voicepacks_dropdown").value = current_voicepack;
+		ELEM_voicepacks_dropdown.value = current_voicepack.voice;
 	}
 }

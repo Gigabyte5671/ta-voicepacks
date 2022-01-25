@@ -153,82 +153,93 @@ const voicepacks = {
 	},
 
 	packs:{
-		Soldier_Male_01:{
-			name:	"Light Armor"
-		},
-		Soldier_Male_02:{
-			name:	"Medium Armor",
-			default:	true
-		},
-		Soldier_Male_03:{
-			name:	"Heavy Armor"
-		},
-		Male_01:{
-			name:	"Battleworn"
-		},
-		Female_01:{
-			name:	"Femme Fatale"
-		},
-		Female_02:{
-			name:	"Ms Wilderzone"
-		},
-		Male_02:{
-			name:	"Disker Dundee"
-		},
-		T2_Female_01:{
-			name:	"T2 Female Heroine"
-		},
-		T2_Female_02:{
-			name:	"T2 Female Professional"
-		},
-		T2_Female_03:{
-			name:	"T2 Female Cadet"
-		},
-		T2_Female_04:{
-			name:	"T2 Female Veteran"
-		},
-		T2_Female_05:{
-			name:	"T2 Female Amazon"
-		},
-		T2_Male_01:{
-			name:	"T2 Male Hero"
-		},
-		T2_Male_02:{
-			name:	"T2 Male Iceman"
-		},
-		T2_Male_03:{
-			name:	"T2 Male Rogue"
-		},
-		T2_Male_04:{
-			name:	"T2 Male Hardcase"
-		},
-		T2_Male_05:{
-			name:	"T2 Male Psycho"
-		},
-		T2_Derm_01:{
-			name:	"T2 Bioderm Warrior"
-		},
-		T2_Derm_02:{
-			name:	"T2 Bioderm Monster"
-		},
-		T2_Derm_03:{
-			name:	"T2 Bioderm Predator"
-		},
-		TotalBiscuit:{
-			name:	"TotalBiscuit"
-		},
-		StowAway:{
-			name:	"Stowaway"
-		},
-		ExcitedGuy:{
-			name:	"Basement Champion"
+		tribes_ascend:{
+			name: "Tribes Ascend",
+			voices:{
+				Soldier_Male_01:{
+					name:	"Light Armor"
+				},
+				Soldier_Male_02:{
+					name:	"Medium Armor",
+					default:	true
+				},
+				Soldier_Male_03:{
+					name:	"Heavy Armor"
+				},
+				Male_01:{
+					name:	"Battleworn"
+				},
+				Female_01:{
+					name:	"Femme Fatale"
+				},
+				Female_02:{
+					name:	"Ms Wilderzone"
+				},
+				Male_02:{
+					name:	"Disker Dundee"
+				},
+				T2_Female_01:{
+					name:	"T2 Female Heroine"
+				},
+				T2_Female_02:{
+					name:	"T2 Female Professional"
+				},
+				T2_Female_03:{
+					name:	"T2 Female Cadet"
+				},
+				T2_Female_04:{
+					name:	"T2 Female Veteran"
+				},
+				T2_Female_05:{
+					name:	"T2 Female Amazon"
+				},
+				T2_Male_01:{
+					name:	"T2 Male Hero"
+				},
+				T2_Male_02:{
+					name:	"T2 Male Iceman"
+				},
+				T2_Male_03:{
+					name:	"T2 Male Rogue"
+				},
+				T2_Male_04:{
+					name:	"T2 Male Hardcase"
+				},
+				T2_Male_05:{
+					name:	"T2 Male Psycho"
+				},
+				T2_Derm_01:{
+					name:	"T2 Bioderm Warrior"
+				},
+				T2_Derm_02:{
+					name:	"T2 Bioderm Monster"
+				},
+				T2_Derm_03:{
+					name:	"T2 Bioderm Predator"
+				},
+				TotalBiscuit:{
+					name:	"TotalBiscuit"
+				},
+				StowAway:{
+					name:	"Stowaway"
+				},
+				ExcitedGuy:{
+					name:	"Basement Champion"
+				}
+			}
 		},
 
-		$Chicken:{
-			name:	"Chicken"
-		},
-		$Dodge:{
-			name:	"Dodge"
+		
+		community:{
+			name: "Community",
+			voices:{
+				$Chicken:{
+					name:	"Chicken"
+				},
+				$Dodge:{
+					name:	"Dodge"
+				}
+			}
 		}
 	}
 }

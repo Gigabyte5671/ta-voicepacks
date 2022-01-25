@@ -18,7 +18,8 @@
 				</div>
 			</div>
 
-			<select name="voicepacks" id="voicepacks_dropdown" onchange="current_voicepack = event.target.value">
+			<p id="current_pack_indicator"></p>
+			<select name="voicepacks" id="voicepacks_dropdown" onchange="packSelectionChanged(event)">
 			</select>
 		</main>
 	</body>
