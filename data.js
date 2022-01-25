@@ -248,6 +248,9 @@ const voicepacks = {
 				$GreenEarth:{
 					name:	"GreenEarth"
 				},
+				$Karu:{
+					name:	"Karu"
+				},
 				$Quench:{
 					name:	"Quench"
 				}
