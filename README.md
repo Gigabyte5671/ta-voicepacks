@@ -1,5 +1,7 @@
 # TA Voicepacks
 
+You can find a current list of voicelines contributed by the community [on the wiki](https://github.com/Gigabyte5671/ta-voicepacks/wiki).
+
 Lines that we want to include in each pack:
 - VGY - "Yes."
 - VGN - "No."
