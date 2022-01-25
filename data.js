@@ -239,6 +239,9 @@ const voicepacks = {
 				$Dodge:{
 					name:	"Dodge"
 				},
+				$Frogkabobs:{
+					name:	"Frogkabobs"
+				},
 				$GreenEarth:{
 					name:	"GreenEarth"
 				},
