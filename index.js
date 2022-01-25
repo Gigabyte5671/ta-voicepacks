@@ -88,7 +88,7 @@ function playVGS(flag){
 		elem.addEventListener("animationend", () => {elem.remove()});
 		document.querySelector(".loading").style.opacity = 1;
 		audio.pause();
-		audio = new Audio("voicepacks/" + current_voicepack.split("_").join(" ") + "/" + file_name_map[current_cmd.join("")] + ".ogg");
+		audio = new Audio( (current_voicepack.includes("$") ? "community_packs/" + current_voicepack.split("$")[1].split("_").join(" ") : "voicepacks/" + current_voicepack.split("_").join(" ")) + "/" + file_name_map[current_cmd.join("")] + ".ogg");
 		audio.addEventListener('loadeddata', () => {
 			if(audio.readyState >= 2){
 				audio.play();

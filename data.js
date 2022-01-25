@@ -222,6 +222,10 @@ const voicepacks = {
 		},
 		ExcitedGuy:{
 			name:	"Basement Champion"
+		},
+
+		$Dodge:{
+			name:	"Dodge"
 		}
 	}
 }
