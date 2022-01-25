@@ -224,6 +224,9 @@ const voicepacks = {
 			name:	"Basement Champion"
 		},
 
+		$Chicken:{
+			name:	"Chicken"
+		},
 		$Dodge:{
 			name:	"Dodge"
 		}
