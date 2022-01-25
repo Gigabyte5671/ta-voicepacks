@@ -242,6 +242,9 @@ const voicepacks = {
 				$Frogkabobs:{
 					name:	"Frogkabobs"
 				},
+				$Gred:{
+					name:	"Gred"
+				},
 				$GreenEarth:{
 					name:	"GreenEarth"
 				},
