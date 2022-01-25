@@ -251,6 +251,9 @@ const voicepacks = {
 				$Karu:{
 					name:	"Karu"
 				},
+				$Mikesters:{
+					name:	"Mikesters"
+				},
 				$Quench:{
 					name:	"Quench"
 				}
