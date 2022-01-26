@@ -233,6 +233,9 @@ const voicepacks = {
 		community:{
 			name: "Community",
 			voices:{
+				$Card:{
+					name:	"Card"
+				},
 				$Chicken:{
 					name:	"Chicken"
 				},
