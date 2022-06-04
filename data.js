@@ -245,6 +245,9 @@ const voicepacks = {
 				$Frogkabobs:{
 					name:	"Frogkabobs"
 				},
+				$Gierling:{
+					name:	"Gierling"
+				},
 				$Gred:{
 					name:	"Gred"
 				},
@@ -254,17 +257,26 @@ const voicepacks = {
 				$IcedWinds:{
 					name:	"IcedWinds"
 				},
+				$Jive:{
+					name:	"Jive"
+				},
 				$Karu:{
 					name:	"Karu"
 				},
 				$Mikesters:{
 					name:	"Mikesters"
 				},
+				$Sparx:{
+					name:	"Sparx"
+				},
 				$Tony:{
 					name:	"Tony"
 				},
 				$Quench:{
 					name:	"Quench"
+				},
+				$Wright:{
+					name:	"Wright"
 				}
 			}
 		}
